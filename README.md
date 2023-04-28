@@ -46,3 +46,37 @@ chattr +i /www/server/panel/data/plugin.json
 ```
 sed -i "s|if (bind_user == 'REMOVED') {|if (bind_user == 'True') {|g" /www/server/panel/BTPanel/static/js/index.js
 ```
+
+============================
+# 优化补丁
+
+补丁来自:https://blog.cccyun.cn/post-431.html
+
+这个是自用的宝塔面板一键优化补丁，主要有以下优化项目：
+
+1.去除宝塔面板强制绑定账号
+
+2.去除各种删除操作时的计算题与延时等待
+
+3.去除创建网站自动创建的垃圾文件（index.html、404.html、.htaccess）
+
+4.关闭未绑定域名提示页面，防止有人访问未绑定域名直接看出来是用的宝塔面板
+
+5.关闭活动推荐与在线客服，去除首页企业版广告
+
+6.去除自动校验文件与上报信息定时任务
+
+7.去除面板日志与网站绑定域名上报
+
+适用于宝塔Linux面板7.7版本的命令
+```
+wget -O optimize.sh https://raw.githubusercontent.com/liangnicho/btpanel-v7.7.0/main/optimize.sh && bash optimize.sh
+```
+适用于宝塔Linux面板>=7.9版本的命令（7.9版本不支持去除强制绑定账号）：
+```
+wget -O optimize.sh https://raw.githubusercontent.com/liangnicho/btpanel-v7.7.0/main/optimize_new.sh && bash optimize.sh
+```
+适用于宝塔国际版aaPanel的命令：
+```
+wget -O optimize.sh https://raw.githubusercontent.com/liangnicho/btpanel-v7.7.0/main/optimize_aapanel.sh && bash optimize.sh
+```
